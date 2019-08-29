@@ -1,0 +1,371 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F18325 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"20 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\Controller_Protocol.c
+[v _Organize_Datas Organize_Datas `(v  1 e 1 0 ]
+"33
+[v _Store_Datas Store_Datas `(uc  1 e 1 0 ]
+"107
+[v _Initialize_Parameters Initialize_Parameters `(v  1 e 1 0 ]
+"28 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"65
+[v _EUSART_ERROR_emargency EUSART_ERROR_emargency `(uc  1 e 1 0 ]
+"79
+[v _Reception_from_emargency Reception_from_emargency `(v  1 e 1 0 ]
+"96
+[v _Reception_from_emargency_main Reception_from_emargency_main `(v  1 e 1 0 ]
+"105
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+"75 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\mcc_generated_files/eusart.c
+[v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
+"76 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"85
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"97
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+"51 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+[s S231 . 1 `uc 1 INTEDG 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"362 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic16f18325.h
+[u S236 . 1 `S231 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES236  1 e 1 @11 ]
+[s S334 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 BCL1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"532
+[u S343 . 1 `S334 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES343  1 e 1 @17 ]
+"1497
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+[s S197 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+]
+"1512
+[u S204 . 1 `S197 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES204  1 e 1 @140 ]
+"1542
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S214 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+]
+"1557
+[u S221 . 1 `S214 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES221  1 e 1 @142 ]
+[s S85 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 BCL1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1642
+[u S94 . 1 `S85 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES94  1 e 1 @145 ]
+"1873
+[v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
+"2189
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+[s S265 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+]
+"2204
+[u S272 . 1 `S265 1 . 1 0 ]
+[v _LATAbits LATAbits `VES272  1 e 1 @268 ]
+"2234
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+[s S248 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+]
+"2249
+[u S255 . 1 `S248 1 . 1 0 ]
+[v _LATCbits LATCbits `VES255  1 e 1 @270 ]
+"2777
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2822
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"2893
+[v _RC1REG RC1REG `VEuc  1 e 1 @409 ]
+"2898
+[v _RCREG RCREG `VEuc  1 e 1 @409 ]
+"2947
+[v _TX1REG TX1REG `VEuc  1 e 1 @410 ]
+"3008
+[v _SP1BRGL SP1BRGL `VEuc  1 e 1 @411 ]
+"3078
+[v _SP1BRGH SP1BRGH `VEuc  1 e 1 @412 ]
+"3132
+[v _RC1STA RC1STA `VEuc  1 e 1 @413 ]
+[s S112 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"3158
+[u S121 . 1 `S112 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES121  1 e 1 @413 ]
+"3267
+[v _RCSTAbits RCSTAbits `VES121  1 e 1 @413 ]
+"3312
+[v _TX1STA TX1STA `VEuc  1 e 1 @414 ]
+"3492
+[v _BAUD1CON BAUD1CON `VEuc  1 e 1 @415 ]
+"3738
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"3788
+[v _WPUC WPUC `VEuc  1 e 1 @526 ]
+"5944
+[v _ODCONA ODCONA `VEuc  1 e 1 @652 ]
+"5989
+[v _ODCONC ODCONC `VEuc  1 e 1 @654 ]
+"11925
+[v _OSCCON1 OSCCON1 `VEuc  1 e 1 @2329 ]
+"12065
+[v _OSCCON3 OSCCON3 `VEuc  1 e 1 @2331 ]
+"12162
+[v _OSCEN OSCEN `VEuc  1 e 1 @2333 ]
+"12208
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @2334 ]
+"12312
+[v _PPSLOCK PPSLOCK `VEuc  1 e 1 @3599 ]
+[s S31 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
+]
+"12322
+[u S33 . 1 `S31 1 . 1 0 ]
+[v _PPSLOCKbits PPSLOCKbits `VES33  1 e 1 @3599 ]
+[s S38 . 1 `uc 1 RXPPS 1 0 :5:0 
+]
+"13337
+[s S40 . 1 `uc 1 RXDTPPS0 1 0 :1:0 
+`uc 1 RXDTPPS1 1 0 :1:1 
+`uc 1 RXDTPPS2 1 0 :1:2 
+`uc 1 RXDTPPS3 1 0 :1:3 
+`uc 1 RXDTPPS4 1 0 :1:4 
+]
+[u S46 . 1 `S38 1 . 1 0 `S40 1 . 1 0 ]
+[v _RXPPSbits RXPPSbits `VES46  1 e 1 @3620 ]
+"19511
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"15 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\Controller_Protocol.c
+[v _not_of_before_data not_of_before_data `uc  1 e 1 0 ]
+[s S450 . 4 `i 1 num 2 0 `i 1 count 2 2 ]
+"16
+[v _OP OP `[3]S450  1 e 12 0 ]
+[s S453 . 4 `i 1 Buffer_count 2 0 `uc 1 Start_signal_has_come 1 2 `uc 1 S_flag 1 3 ]
+"17
+[v _StP StP `[3]S453  1 e 12 0 ]
+[s S457 . 5 `i 1 data_send_count 2 0 `i 1 last_signal 2 2 `uc 1 byte_data_complete 1 4 ]
+"18
+[v _SeP SeP `[3]S457  1 e 15 0 ]
+[s S165 . 1 `uc 1 lower_data 1 0 :4:0 
+`uc 1 upper_data 1 0 :4:4 
+]
+"92 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\Controller_Protocol.h
+[u S168 . 1 `S165 1 . 1 0 `uc 1 all_data 1 0 ]
+[v _Buffer0 Buffer0 `[5]S168  1 e 5 0 ]
+[s S171 . 1 `uc 1 d0 1 0 :1:0 
+`uc 1 d1 1 0 :1:1 
+`uc 1 d2 1 0 :1:2 
+`uc 1 d3 1 0 :1:3 
+`uc 1 d4 1 0 :1:4 
+`uc 1 d5 1 0 :1:5 
+`uc 1 d6 1 0 :1:6 
+`uc 1 d7 1 0 :1:7 
+]
+"93
+[s S180 . 2 `uc 1 lower_data 1 0 :4:0 
+`uc 1 upper_data 1 0 :4:4 
+`uc 1 LD_error 1 1 :1:0 
+`uc 1 UD_error 1 1 :1:1 
+]
+[s S185 . 2 `uc 1 all_data 1 0 `uc 1 errors 1 1 :2:0 
+]
+[u S188 . 2 `S171 1 . 1 0 `S180 1 . 2 0 `S185 1 . 2 0 ]
+[v _RxData0 RxData0 `[1]S188  1 e 2 0 ]
+"23 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\main.c
+[v _Receive_flag Receive_flag `uc  1 e 1 0 ]
+"61 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\mcc_generated_files/eusart.c
+[v _eusartTxHead eusartTxHead `VEuc  1 e 1 0 ]
+"62
+[v _eusartTxTail eusartTxTail `VEuc  1 e 1 0 ]
+"63
+[v _eusartTxBuffer eusartTxBuffer `VE[8]uc  1 e 8 0 ]
+"64
+[v _eusartTxBufferRemaining eusartTxBufferRemaining `VEuc  1 e 1 0 ]
+"66
+[v _eusartRxHead eusartRxHead `VEuc  1 e 1 0 ]
+"67
+[v _eusartRxTail eusartRxTail `VEuc  1 e 1 0 ]
+"68
+[v _eusartRxBuffer eusartRxBuffer `VE[8]uc  1 e 8 0 ]
+"69
+[v _eusartRxCount eusartRxCount `VEuc  1 e 1 0 ]
+"28 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"60
+} 0
+"76 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"83
+} 0
+"97
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+{
+"101
+} 0
+"51 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"88
+[v PIN_MANAGER_Initialize@state state `uc  1 a 1 4 ]
+"101
+} 0
+"85 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"95
+} 0
+"75 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\mcc_generated_files/eusart.c
+[v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
+{
+"110
+} 0
+"96 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\main.c
+[v _Reception_from_emargency_main Reception_from_emargency_main `(v  1 e 1 0 ]
+{
+"102
+} 0
+"20 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\Controller_Protocol.c
+[v _Organize_Datas Organize_Datas `(v  1 e 1 0 ]
+{
+[s S171 . 1 `uc 1 d0 1 0 :1:0 
+`uc 1 d1 1 0 :1:1 
+`uc 1 d2 1 0 :1:2 
+`uc 1 d3 1 0 :1:3 
+`uc 1 d4 1 0 :1:4 
+`uc 1 d5 1 0 :1:5 
+`uc 1 d6 1 0 :1:6 
+`uc 1 d7 1 0 :1:7 
+]
+[s S180 . 2 `uc 1 lower_data 1 0 :4:0 
+`uc 1 upper_data 1 0 :4:4 
+`uc 1 LD_error 1 1 :1:0 
+`uc 1 UD_error 1 1 :1:1 
+]
+[s S185 . 2 `uc 1 all_data 1 0 `uc 1 errors 1 1 :2:0 
+]
+[u S188 . 2 `S171 1 . 1 0 `S180 1 . 2 0 `S185 1 . 2 0 ]
+[v Organize_Datas@RxData RxData `*.4S188  1 a 1 wreg ]
+[v Organize_Datas@RxData RxData `*.4S188  1 a 1 wreg ]
+[s S165 . 1 `uc 1 lower_data 1 0 :4:0 
+`uc 1 upper_data 1 0 :4:4 
+]
+[u S168 . 1 `S165 1 . 1 0 `uc 1 all_data 1 0 ]
+[v Organize_Datas@Buffer Buffer `*.4S168  1 p 1 4 ]
+[v Organize_Datas@number_of_data number_of_data `i  1 p 2 5 ]
+[v Organize_Datas@bus_number bus_number `i  1 p 2 7 ]
+[v Organize_Datas@RxData RxData `*.4S188  1 a 1 14 ]
+"31
+} 0
+"107
+[v _Initialize_Parameters Initialize_Parameters `(v  1 e 1 0 ]
+{
+"108
+[v Initialize_Parameters@i i `i  1 s 2 i ]
+"115
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 6 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 4 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 7 ]
+"51
+} 0
+"105 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\main.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+{
+"123
+} 0
+"79
+[v _Reception_from_emargency Reception_from_emargency `(v  1 e 1 0 ]
+{
+"80
+[v Reception_from_emargency@Receive_data_count Receive_data_count `uc  1 s 1 Receive_data_count ]
+"94
+} 0
+"33 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\Controller_Protocol.c
+[v _Store_Datas Store_Datas `(uc  1 e 1 0 ]
+{
+[s S165 . 1 `uc 1 lower_data 1 0 :4:0 
+`uc 1 upper_data 1 0 :4:4 
+]
+[u S168 . 1 `S165 1 . 1 0 `uc 1 all_data 1 0 ]
+[v Store_Datas@Buffer Buffer `*.4S168  1 a 1 wreg ]
+[v Store_Datas@Buffer Buffer `*.4S168  1 a 1 wreg ]
+[v Store_Datas@received_data received_data `uc  1 p 1 2 ]
+[v Store_Datas@number_of_receive_data number_of_receive_data `i  1 p 2 3 ]
+[v Store_Datas@bus_number bus_number `i  1 p 2 5 ]
+[v Store_Datas@EUSART_ERROR EUSART_ERROR `*.37(uc  1 p 2 7 ]
+[v Store_Datas@Buffer Buffer `*.4S168  1 a 1 0 ]
+"64
+} 0
+"65 Z:\elect\share\無線非常停止\プログラム\wireless_emargency_receiver.X\main.c
+[v _EUSART_ERROR_emargency EUSART_ERROR_emargency `(uc  1 e 1 0 ]
+{
+"68
+[v EUSART_ERROR_emargency@a a `uc  1 a 1 1 ]
+"76
+} 0

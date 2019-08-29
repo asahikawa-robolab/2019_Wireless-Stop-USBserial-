@@ -1,0 +1,507 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"25 Controller_Protocol.h
+[s S5 :4 `uc 1 :4 `uc 1 ]
+[n S5 . lower_data upper_data ]
+"24
+[u S4 `S5 1 `uc 1 ]
+[n S4 . . all_data ]
+"34
+[s S7 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S7 . d0 d1 d2 d3 d4 d5 d6 d7 ]
+"45
+[s S8 :4 `uc 1 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S8 . lower_data upper_data LD_error UD_error ]
+"51
+[s S9 `uc 1 :2 `uc 1 ]
+[n S9 . all_data errors ]
+"32
+[u S6 `S7 1 `S8 1 `S9 1 ]
+[n S6 . . . . ]
+"7
+[s S1 `i 1 `i 1 ]
+[n S1 . num count ]
+"12
+[s S2 `i 1 `uc 1 `uc 1 ]
+[n S2 . Buffer_count Start_signal_has_come S_flag ]
+"18
+[s S3 `i 1 `i 1 `uc 1 ]
+[n S3 . data_send_count last_signal byte_data_complete ]
+[v F73 `(uc ~T0 @X0 0 tf ]
+[v F77 `(v ~T0 @X0 0 tf1`uc ]
+[v F80 `(v ~T0 @X0 0 tf1`uc ]
+[v F86 `(v ~T0 @X0 0 tf1`uc ]
+[v F89 `(v ~T0 @X0 0 tf1`uc ]
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;Controller_Protocol.h: 7: typedef struct{
+[; ;Controller_Protocol.h: 8: int num;
+[; ;Controller_Protocol.h: 9: int count;
+[; ;Controller_Protocol.h: 10: }Organize_Parameter;
+[; ;Controller_Protocol.h: 12: typedef struct{
+[; ;Controller_Protocol.h: 13: int Buffer_count;
+[; ;Controller_Protocol.h: 14: bool Start_signal_has_come;
+[; ;Controller_Protocol.h: 15: bool S_flag;
+[; ;Controller_Protocol.h: 16: }Store_Parameter;
+[; ;Controller_Protocol.h: 18: typedef struct{
+[; ;Controller_Protocol.h: 19: int data_send_count;
+[; ;Controller_Protocol.h: 20: int last_signal;
+[; ;Controller_Protocol.h: 21: bool byte_data_complete;
+[; ;Controller_Protocol.h: 22: }Send_Parameter;
+[; ;Controller_Protocol.h: 24: typedef union{
+[; ;Controller_Protocol.h: 25: struct{
+[; ;Controller_Protocol.h: 26: unsigned lower_data :4;
+[; ;Controller_Protocol.h: 27: unsigned upper_data :4;
+[; ;Controller_Protocol.h: 28: };
+[; ;Controller_Protocol.h: 29: unsigned char all_data;
+[; ;Controller_Protocol.h: 30: }Untreated;
+[; ;Controller_Protocol.h: 32: typedef union{
+[; ;Controller_Protocol.h: 34: struct{
+[; ;Controller_Protocol.h: 35: unsigned d0:1;
+[; ;Controller_Protocol.h: 36: unsigned d1:1;
+[; ;Controller_Protocol.h: 37: unsigned d2:1;
+[; ;Controller_Protocol.h: 38: unsigned d3:1;
+[; ;Controller_Protocol.h: 39: unsigned d4:1;
+[; ;Controller_Protocol.h: 40: unsigned d5:1;
+[; ;Controller_Protocol.h: 41: unsigned d6:1;
+[; ;Controller_Protocol.h: 42: unsigned d7:1;
+[; ;Controller_Protocol.h: 43: };
+[; ;Controller_Protocol.h: 45: struct{
+[; ;Controller_Protocol.h: 46: unsigned lower_data :4;
+[; ;Controller_Protocol.h: 47: unsigned upper_data :4;
+[; ;Controller_Protocol.h: 48: unsigned LD_error :1;
+[; ;Controller_Protocol.h: 49: unsigned UD_error :1;
+[; ;Controller_Protocol.h: 50: };
+[; ;Controller_Protocol.h: 51: struct{
+[; ;Controller_Protocol.h: 52: unsigned char all_data;
+[; ;Controller_Protocol.h: 53: unsigned errors :2;
+[; ;Controller_Protocol.h: 54: };
+[; ;Controller_Protocol.h: 55: }Processed;
+[; ;Controller_Protocol.h: 57: typedef union{
+[; ;Controller_Protocol.h: 59: struct{
+[; ;Controller_Protocol.h: 60: unsigned d0:1;
+[; ;Controller_Protocol.h: 61: unsigned d1:1;
+[; ;Controller_Protocol.h: 62: unsigned d2:1;
+[; ;Controller_Protocol.h: 63: unsigned d3:1;
+[; ;Controller_Protocol.h: 64: unsigned d4:1;
+[; ;Controller_Protocol.h: 65: unsigned d5:1;
+[; ;Controller_Protocol.h: 66: unsigned d6:1;
+[; ;Controller_Protocol.h: 67: unsigned d7:1;
+[; ;Controller_Protocol.h: 68: };
+[; ;Controller_Protocol.h: 70: unsigned char all_data;
+[; ;Controller_Protocol.h: 71: }TxData_divided;
+"92 Controller_Protocol.h
+[v _Buffer0 `S4 ~T0 @X0 + * -> 1 `i -> 2 `i -> 3 `i e ]
+[; ;Controller_Protocol.h: 92: Untreated Buffer0[1 * 2 + 3];
+"93
+[v _RxData0 `S6 ~T0 @X0 -> -> 1 `i `ux e ]
+[; ;Controller_Protocol.h: 93: Processed RxData0[1];
+"105
+[v _TxData0 `uc ~T0 @X0 -> -> 1 `i `ux e ]
+[; ;Controller_Protocol.h: 105: unsigned char TxData0[1];
+[; ;Controller_Protocol.h: 115: extern void Initialize_Parameters(void);
+[; ;Controller_Protocol.h: 116: extern void Organize_Datas(Processed *,Untreated *,int,int);
+[; ;Controller_Protocol.h: 117: extern bool Store_Datas(Untreated *,unsigned char,int,int, bool (*)(void));
+[; ;Controller_Protocol.h: 118: extern void Send_StartSignal(void (*)(unsigned char),void (*)(bool),bool);
+[; ;Controller_Protocol.h: 119: extern bool Send_Till_EndSignal(unsigned char *,void (*)(unsigned char),void (*)(bool),int,int);
+"15 Controller_Protocol.c
+[v _not_of_before_data `uc ~T0 @X0 1 e ]
+[; ;Controller_Protocol.c: 15: unsigned char not_of_before_data;
+"16
+[v _OP `S1 ~T0 @X0 -> 3 `i e ]
+[; ;Controller_Protocol.c: 16: Organize_Parameter OP[3];
+"17
+[v _StP `S2 ~T0 @X0 -> 3 `i e ]
+[; ;Controller_Protocol.c: 17: Store_Parameter StP[3];
+"18
+[v _SeP `S3 ~T0 @X0 -> 3 `i e ]
+[; ;Controller_Protocol.c: 18: Send_Parameter SeP[3];
+"20
+[v _Organize_Datas `(v ~T0 @X0 1 ef4`*S6`*S4`i`i ]
+{
+[; ;Controller_Protocol.c: 20: void Organize_Datas(Processed *RxData, Untreated *Buffer, int number_of_data, int bus_number) {
+[e :U _Organize_Datas ]
+[v _RxData `*S6 ~T0 @X0 1 r1 ]
+[v _Buffer `*S4 ~T0 @X0 1 r2 ]
+[v _number_of_data `i ~T0 @X0 1 r3 ]
+[v _bus_number `i ~T0 @X0 1 r4 ]
+[f ]
+[; ;Controller_Protocol.c: 21: OP[bus_number].count = 1;
+"21
+[e = . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 1 -> 1 `i ]
+[; ;Controller_Protocol.c: 22: for (OP[bus_number].num = 0; OP[bus_number].num < number_of_data; OP[bus_number].num++) {
+"22
+{
+[e = . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 -> 0 `i ]
+[e $U 16  ]
+[e :U 13 ]
+{
+[; ;Controller_Protocol.c: 23: RxData[OP[bus_number].num].upper_data = Buffer[OP[bus_number].count].upper_data;
+"23
+[e = . . *U + _RxData * -> . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 `x -> -> # *U _RxData `i `x 1 1 . . *U + _Buffer * -> . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 1 `x -> -> # *U _Buffer `i `x 0 1 ]
+[; ;Controller_Protocol.c: 24: RxData[OP[bus_number].num].lower_data = Buffer[OP[bus_number].count + 1].upper_data;
+"24
+[e = . . *U + _RxData * -> . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 `x -> -> # *U _RxData `i `x 1 0 . . *U + _Buffer * -> + . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 1 -> 1 `i `x -> -> # *U _Buffer `i `x 0 1 ]
+[; ;Controller_Protocol.c: 25: if ((Buffer[OP[bus_number].count].upper_data | Buffer[OP[bus_number].count + 1].lower_data) == 15)RxData[OP[bus_number].num].UD_error = 0;
+"25
+[e $ ! == | -> . . *U + _Buffer * -> . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 1 `x -> -> # *U _Buffer `i `x 0 1 `i -> . . *U + _Buffer * -> + . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 1 -> 1 `i `x -> -> # *U _Buffer `i `x 0 0 `i -> 15 `i 17  ]
+[e = . . *U + _RxData * -> . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 `x -> -> # *U _RxData `i `x 1 3 -> -> 0 `i `uc ]
+[e $U 18  ]
+"26
+[e :U 17 ]
+[; ;Controller_Protocol.c: 26: else RxData[OP[bus_number].num].UD_error = 1;
+[e = . . *U + _RxData * -> . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 `x -> -> # *U _RxData `i `x 1 3 -> -> 1 `i `uc ]
+[e :U 18 ]
+[; ;Controller_Protocol.c: 27: if ((Buffer[OP[bus_number].count + 1].upper_data | Buffer[OP[bus_number].count + 2].lower_data) == 15)RxData[OP[bus_number].num].LD_error = 0;
+"27
+[e $ ! == | -> . . *U + _Buffer * -> + . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 1 -> 1 `i `x -> -> # *U _Buffer `i `x 0 1 `i -> . . *U + _Buffer * -> + . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 1 -> 2 `i `x -> -> # *U _Buffer `i `x 0 0 `i -> 15 `i 19  ]
+[e = . . *U + _RxData * -> . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 `x -> -> # *U _RxData `i `x 1 2 -> -> 0 `i `uc ]
+[e $U 20  ]
+"28
+[e :U 19 ]
+[; ;Controller_Protocol.c: 28: else RxData[OP[bus_number].num].LD_error = 1;
+[e = . . *U + _RxData * -> . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 `x -> -> # *U _RxData `i `x 1 2 -> -> 1 `i `uc ]
+[e :U 20 ]
+[; ;Controller_Protocol.c: 29: OP[bus_number].count += 2;
+"29
+[e =+ . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 1 -> 2 `i ]
+"30
+}
+"22
+[e ++ . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 -> 1 `i ]
+[e :U 16 ]
+[e $ < . *U + &U _OP * -> -> _bus_number `ui `ux -> -> # *U &U _OP `ui `ux 0 _number_of_data 13  ]
+[e :U 14 ]
+"30
+}
+[; ;Controller_Protocol.c: 30: }
+[; ;Controller_Protocol.c: 31: }
+"31
+[e :UE 12 ]
+}
+"33
+[v _Store_Datas `(uc ~T0 @X0 1 ef5`*S4`uc`i`i`*F73 ]
+{
+[; ;Controller_Protocol.c: 33: bool Store_Datas(Untreated *Buffer, unsigned char received_data, int number_of_receive_data, int bus_number, bool(*EUSART_ERROR)(void)) {
+[e :U _Store_Datas ]
+[v _Buffer `*S4 ~T0 @X0 1 r1 ]
+[v _received_data `uc ~T0 @X0 1 r2 ]
+[v _number_of_receive_data `i ~T0 @X0 1 r3 ]
+[v _bus_number `i ~T0 @X0 1 r4 ]
+[v F107 `(uc ~T0 @X0 0 tf ]
+[v _EUSART_ERROR `*F107 ~T0 @X0 1 r5 ]
+[f ]
+[; ;Controller_Protocol.c: 34: if (EUSART_ERROR() == 1) {
+"34
+[e $ ! == -> ( *U _EUSART_ERROR ..  `i -> 1 `i 22  ]
+{
+[; ;Controller_Protocol.c: 35: StP[bus_number].S_flag = 0;
+"35
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 2 -> -> 0 `i `uc ]
+[; ;Controller_Protocol.c: 36: StP[bus_number].Buffer_count = 0;
+"36
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 0 -> 0 `i ]
+[; ;Controller_Protocol.c: 37: StP[bus_number].Start_signal_has_come = 0;
+"37
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 1 -> -> 0 `i `uc ]
+[; ;Controller_Protocol.c: 38: return 1;
+"38
+[e ) -> -> 1 `i `uc ]
+[e $UE 21  ]
+"39
+}
+[; ;Controller_Protocol.c: 39: } else {
+[e $U 23  ]
+[e :U 22 ]
+{
+[; ;Controller_Protocol.c: 41: if (StP[bus_number].Start_signal_has_come == 0) {
+"41
+[e $ ! == -> . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 1 `i -> 0 `i 24  ]
+{
+[; ;Controller_Protocol.c: 42: Buffer[StP[bus_number].S_flag].all_data = received_data;
+"42
+[e = . *U + _Buffer * -> . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 2 `ux -> -> # *U _Buffer `ui `ux 1 _received_data ]
+[; ;Controller_Protocol.c: 43: if (StP[bus_number].S_flag == 1) {
+"43
+[e $ ! == -> . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 2 `i -> 1 `i 25  ]
+{
+[; ;Controller_Protocol.c: 44: if (Buffer[1].lower_data == 5)StP[bus_number].Start_signal_has_come = 1;
+"44
+[e $ ! == -> . . *U + _Buffer * -> -> 1 `i `x -> -> # *U _Buffer `i `x 0 0 `i -> 5 `i 26  ]
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 1 -> -> 1 `i `uc ]
+[e :U 26 ]
+[; ;Controller_Protocol.c: 45: StP[bus_number].S_flag = 0;
+"45
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 2 -> -> 0 `i `uc ]
+"46
+}
+[; ;Controller_Protocol.c: 46: }
+[e $U 27  ]
+"47
+[e :U 25 ]
+[; ;Controller_Protocol.c: 47: else if (Buffer[0].all_data == 'S')StP[bus_number].S_flag = 1;
+[e $ ! == -> . *U + _Buffer * -> -> 0 `i `x -> -> # *U _Buffer `i `x 1 `ui -> 83 `ui 28  ]
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 2 -> -> 1 `i `uc ]
+[e :U 28 ]
+"48
+[e :U 27 ]
+}
+[; ;Controller_Protocol.c: 48: } else {
+[e $U 29  ]
+[e :U 24 ]
+{
+[; ;Controller_Protocol.c: 49: StP[bus_number].Buffer_count++;
+"49
+[e ++ . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 0 -> 1 `i ]
+[; ;Controller_Protocol.c: 50: Buffer[StP[bus_number].Buffer_count].all_data = received_data;
+"50
+[e = . *U + _Buffer * -> . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 0 `x -> -> # *U _Buffer `i `x 1 _received_data ]
+[; ;Controller_Protocol.c: 51: if (Buffer[StP[bus_number].Buffer_count].all_data == 'C') {
+"51
+[e $ ! == -> . *U + _Buffer * -> . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 0 `x -> -> # *U _Buffer `i `x 1 `ui -> 67 `ui 30  ]
+{
+[; ;Controller_Protocol.c: 52: if (Buffer[StP[bus_number].Buffer_count - 1].upper_data == 3) {
+"52
+[e $ ! == -> . . *U + _Buffer * -> - . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 0 -> 1 `i `x -> -> # *U _Buffer `i `x 0 1 `i -> 3 `i 31  ]
+{
+[; ;Controller_Protocol.c: 53: StP[bus_number].Buffer_count = 1;
+"53
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 0 -> 1 `i ]
+[; ;Controller_Protocol.c: 54: StP[bus_number].Start_signal_has_come = 0;
+"54
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 1 -> -> 0 `i `uc ]
+"55
+}
+[e :U 31 ]
+"56
+}
+[e :U 30 ]
+[; ;Controller_Protocol.c: 55: }
+[; ;Controller_Protocol.c: 56: }
+[; ;Controller_Protocol.c: 57: if (StP[bus_number].Buffer_count == number_of_receive_data - 1) {
+"57
+[e $ ! == . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 0 - _number_of_receive_data -> 1 `i 32  ]
+{
+[; ;Controller_Protocol.c: 58: StP[bus_number].Buffer_count = 1;
+"58
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 0 -> 1 `i ]
+[; ;Controller_Protocol.c: 59: StP[bus_number].Start_signal_has_come = 0;
+"59
+[e = . *U + &U _StP * -> -> _bus_number `ui `ux -> -> # *U &U _StP `ui `ux 1 -> -> 0 `i `uc ]
+"60
+}
+[e :U 32 ]
+"61
+}
+[e :U 29 ]
+[; ;Controller_Protocol.c: 60: }
+[; ;Controller_Protocol.c: 61: }
+[; ;Controller_Protocol.c: 62: return 0;
+"62
+[e ) -> -> 0 `i `uc ]
+[e $UE 21  ]
+"63
+}
+[e :U 23 ]
+[; ;Controller_Protocol.c: 63: }
+[; ;Controller_Protocol.c: 64: }
+"64
+[e :UE 21 ]
+}
+"66
+[v _Send_StartSignal `(v ~T0 @X0 1 ef3`*F77`*F80`uc ]
+{
+[; ;Controller_Protocol.c: 66: void Send_StartSignal(void (*transmission)(unsigned char), void (*txinterrupt_control)(bool), bool TXIEbit) {
+[e :U _Send_StartSignal ]
+[v F110 `(v ~T0 @X0 0 tf1`uc ]
+[v _transmission `*F110 ~T0 @X0 1 r1 ]
+[v F113 `(v ~T0 @X0 0 tf1`uc ]
+[v _txinterrupt_control `*F113 ~T0 @X0 1 r2 ]
+[v _TXIEbit `uc ~T0 @X0 1 r3 ]
+[f ]
+[; ;Controller_Protocol.c: 67: if (!TXIEbit) {
+"67
+[e $ ! ! != -> _TXIEbit `i -> -> -> 0 `i `uc `i 34  ]
+{
+[; ;Controller_Protocol.c: 68: transmission('S');
+"68
+[e ( *U _transmission (1 -> -> 83 `ui `uc ]
+[; ;Controller_Protocol.c: 69: txinterrupt_control(1);
+"69
+[e ( *U _txinterrupt_control (1 -> -> 1 `i `uc ]
+[; ;Controller_Protocol.c: 70: not_of_before_data = 0x05;
+"70
+[e = _not_of_before_data -> -> 5 `i `uc ]
+"71
+}
+[e :U 34 ]
+[; ;Controller_Protocol.c: 71: }
+[; ;Controller_Protocol.c: 72: }
+"72
+[e :UE 33 ]
+}
+"74
+[v _Send_Till_EndSignal `(uc ~T0 @X0 1 ef5`*uc`*F86`*F89`i`i ]
+{
+[; ;Controller_Protocol.c: 74: bool Send_Till_EndSignal(unsigned char *TxData, void (*transmission)(unsigned char), void (*txinterrupt_control)(bool), int number_of_txdata, int bus_number) {
+[e :U _Send_Till_EndSignal ]
+[v _TxData `*uc ~T0 @X0 1 r1 ]
+[v F118 `(v ~T0 @X0 0 tf1`uc ]
+[v _transmission `*F118 ~T0 @X0 1 r2 ]
+[v F121 `(v ~T0 @X0 0 tf1`uc ]
+[v _txinterrupt_control `*F121 ~T0 @X0 1 r3 ]
+[v _number_of_txdata `i ~T0 @X0 1 r4 ]
+[v _bus_number `i ~T0 @X0 1 r5 ]
+[f ]
+[; ;Controller_Protocol.c: 75: if (SeP[bus_number].data_send_count != number_of_txdata) {
+"75
+[e $ ! != . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 0 _number_of_txdata 36  ]
+{
+[; ;Controller_Protocol.c: 76: if(SeP[bus_number].data_send_count == 0)not_of_before_data = 0x05;
+"76
+[e $ ! == . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 0 -> 0 `i 37  ]
+[e = _not_of_before_data -> -> 5 `i `uc ]
+[e :U 37 ]
+[; ;Controller_Protocol.c: 77: if (SeP[bus_number].byte_data_complete == 1) {
+"77
+[e $ ! == -> . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 2 `i -> 1 `i 38  ]
+{
+[; ;Controller_Protocol.c: 78: transmission((TxData[SeP[bus_number].data_send_count] & 0xf0) | (not_of_before_data & 0x0f));
+"78
+[e ( *U _transmission (1 -> | & -> *U + _TxData * -> . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 0 `x -> -> # *U _TxData `i `x `i -> 240 `i & -> _not_of_before_data `i -> 15 `i `uc ]
+[; ;Controller_Protocol.c: 79: SeP[bus_number].byte_data_complete = 0;
+"79
+[e = . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 2 -> -> 0 `i `uc ]
+"80
+}
+[; ;Controller_Protocol.c: 80: } else {
+[e $U 39  ]
+[e :U 38 ]
+{
+[; ;Controller_Protocol.c: 81: not_of_before_data = ~TxData[SeP[bus_number].data_send_count];
+"81
+[e = _not_of_before_data -> ~ -> *U + _TxData * -> . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 0 `x -> -> # *U _TxData `i `x `i `uc ]
+[; ;Controller_Protocol.c: 82: transmission((TxData[SeP[bus_number].data_send_count] << 4) | (not_of_before_data >> 4));
+"82
+[e ( *U _transmission (1 -> | << -> *U + _TxData * -> . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 0 `x -> -> # *U _TxData `i `x `i -> 4 `i >> -> _not_of_before_data `i -> 4 `i `uc ]
+[; ;Controller_Protocol.c: 83: SeP[bus_number].byte_data_complete = 1;
+"83
+[e = . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 2 -> -> 1 `i `uc ]
+[; ;Controller_Protocol.c: 84: SeP[bus_number].data_send_count++;
+"84
+[e ++ . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 0 -> 1 `i ]
+"85
+}
+[e :U 39 ]
+"86
+}
+[; ;Controller_Protocol.c: 85: }
+[; ;Controller_Protocol.c: 86: } else {
+[e $U 40  ]
+[e :U 36 ]
+{
+[; ;Controller_Protocol.c: 87: if (SeP[bus_number].last_signal == 0) {
+"87
+[e $ ! == . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 1 -> 0 `i 41  ]
+{
+[; ;Controller_Protocol.c: 88: transmission(0x30 | (not_of_before_data & 0x0f));
+"88
+[e ( *U _transmission (1 -> | -> 48 `i & -> _not_of_before_data `i -> 15 `i `uc ]
+[; ;Controller_Protocol.c: 89: SeP[bus_number].last_signal++;
+"89
+[e ++ . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 1 -> 1 `i ]
+"90
+}
+[; ;Controller_Protocol.c: 90: } else if (SeP[bus_number].last_signal == 1) {
+[e $U 42  ]
+[e :U 41 ]
+[e $ ! == . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 1 -> 1 `i 43  ]
+{
+[; ;Controller_Protocol.c: 91: transmission('C');
+"91
+[e ( *U _transmission (1 -> -> 67 `ui `uc ]
+[; ;Controller_Protocol.c: 92: SeP[bus_number].last_signal++;
+"92
+[e ++ . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 1 -> 1 `i ]
+"93
+}
+[; ;Controller_Protocol.c: 93: } else {
+[e $U 44  ]
+[e :U 43 ]
+{
+[; ;Controller_Protocol.c: 94: SeP[bus_number].last_signal = 0;
+"94
+[e = . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 1 -> 0 `i ]
+[; ;Controller_Protocol.c: 95: SeP[bus_number].data_send_count = 0;
+"95
+[e = . *U + &U _SeP * -> -> _bus_number `ui `ux -> -> # *U &U _SeP `ui `ux 0 -> 0 `i ]
+[; ;Controller_Protocol.c: 96: txinterrupt_control(0);
+"96
+[e ( *U _txinterrupt_control (1 -> -> 0 `i `uc ]
+[; ;Controller_Protocol.c: 97: return 1;
+"97
+[e ) -> -> 1 `i `uc ]
+[e $UE 35  ]
+"98
+}
+[e :U 44 ]
+[e :U 42 ]
+"99
+}
+[e :U 40 ]
+[; ;Controller_Protocol.c: 98: }
+[; ;Controller_Protocol.c: 99: }
+[; ;Controller_Protocol.c: 100: return 0;
+"100
+[e ) -> -> 0 `i `uc ]
+[e $UE 35  ]
+[; ;Controller_Protocol.c: 101: }
+"101
+[e :UE 35 ]
+}
+"107
+[v _Initialize_Parameters `(v ~T0 @X0 1 ef ]
+{
+[; ;Controller_Protocol.c: 107: extern void Initialize_Parameters(void) {
+[e :U _Initialize_Parameters ]
+[f ]
+"108
+[v F126 `i ~T0 @X0 1 s i ]
+[; ;Controller_Protocol.c: 108: static int i;
+[; ;Controller_Protocol.c: 110: for (i = 0; i < 3; i++)OP[i].count = 1;
+"110
+{
+[e = F126 -> 0 `i ]
+[e $ < F126 -> 3 `i 46  ]
+[e $U 47  ]
+[e :U 46 ]
+[e = . *U + &U _OP * -> -> F126 `ui `ux -> -> # *U &U _OP `ui `ux 1 -> 1 `i ]
+[e ++ F126 -> 1 `i ]
+[e $ < F126 -> 3 `i 46  ]
+[e :U 47 ]
+}
+[; ;Controller_Protocol.c: 111: for (i = 0; i < 3; i++) {
+"111
+{
+[e = F126 -> 0 `i ]
+[e $ < F126 -> 3 `i 49  ]
+[e $U 50  ]
+[e :U 49 ]
+{
+[; ;Controller_Protocol.c: 112: StP[i].Buffer_count = 1;
+"112
+[e = . *U + &U _StP * -> -> F126 `ui `ux -> -> # *U &U _StP `ui `ux 0 -> 1 `i ]
+[; ;Controller_Protocol.c: 113: SeP[i].byte_data_complete = 1;
+"113
+[e = . *U + &U _SeP * -> -> F126 `ui `ux -> -> # *U &U _SeP `ui `ux 2 -> -> 1 `i `uc ]
+"114
+}
+"111
+[e ++ F126 -> 1 `i ]
+[e $ < F126 -> 3 `i 49  ]
+[e :U 50 ]
+"114
+}
+[; ;Controller_Protocol.c: 114: }
+[; ;Controller_Protocol.c: 115: }
+"115
+[e :UE 45 ]
+}
